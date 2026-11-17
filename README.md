@@ -51,14 +51,32 @@ This BLAS extension implements the operation
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-ext-base-ndarray-saxpby
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import saxpby from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-saxpby@esm/index.mjs';
+var saxpby = require( '@stdlib/blas-ext-base-ndarray-saxpby' );
 ```
 
 #### saxpby( arrays )
@@ -66,19 +84,14 @@ import saxpby from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-
 Multiplies a one-dimensional single-precision floating-point ndarray by a scalar constant and adds the result to a second one-dimensional single-precision floating-point ndarray multiplied by a scalar constant.
 
 ```javascript
-import Float32Vector from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-vector-float32@esm/index.mjs';
-import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@esm/index.mjs';
+var Float32Vector = require( '@stdlib/ndarray-vector-float32' );
+var Float32Tensor0D = require( '@stdlib/ndarray-tensor0d-float32' );
 
 var x = new Float32Vector( [ 1.0, 2.0, 3.0, 4.0, 5.0 ] );
 var y = new Float32Vector( [ 2.0, 3.0, 4.0, 5.0, 6.0 ] );
 
-var alpha = scalar2ndarray( 5.0, {
-    'dtype': 'float32'
-});
-
-var beta = scalar2ndarray( 2.0, {
-    'dtype': 'float32'
-});
+var alpha = new Float32Tensor0D( 5.0 );
+var beta = new Float32Tensor0D( 2.0 );
 
 saxpby( [ x, y, alpha, beta ] );
 // y => <ndarray>[ 9.0, 16.0, 23.0, 30.0, 37.0 ]
@@ -113,17 +126,12 @@ The function has the following parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="module">
-
-import discreteUniform from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-discrete-uniform@esm/index.mjs';
-import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@esm/index.mjs';
-import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
-import ndarraylike2scalar from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ndarraylike2scalar@esm/index.mjs';
-import saxpby from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-saxpby@esm/index.mjs';
+```javascript
+var discreteUniform = require( '@stdlib/random-discrete-uniform' );
+var Float32Tensor0D = require( '@stdlib/ndarray-tensor0d-float32' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var ndarraylike2scalar = require( '@stdlib/ndarray-ndarraylike2scalar' );
+var saxpby = require( '@stdlib/blas-ext-base-ndarray-saxpby' );
 
 var opts = {
     'dtype': 'float32'
@@ -135,18 +143,14 @@ console.log( ndarray2array( x ) );
 var y = discreteUniform( [ 10 ], -100, 100, opts );
 console.log( ndarray2array( y ) );
 
-var alpha = scalar2ndarray( 5.0, opts );
+var alpha = new Float32Tensor0D( 5.0 );
 console.log( 'Alpha: %d', ndarraylike2scalar( alpha ) );
 
-var beta = scalar2ndarray( 2.0, opts );
+var beta = new Float32Tensor0D( 2.0 );
 console.log( 'Beta: %d', ndarraylike2scalar( beta ) );
 
 saxpby( [ x, y, alpha, beta ] );
 console.log( ndarray2array( y ) );
-
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -170,7 +174,7 @@ console.log( ndarray2array( y ) );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
