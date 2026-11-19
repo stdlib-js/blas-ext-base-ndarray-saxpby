@@ -46,7 +46,7 @@ This BLAS extension implements the operation
 ```
 
 <!-- <div class="equation" align="center" data-raw-text="\mathbf{y} = \alpha \mathbf{x} + \beta \mathbf{y}" data-equation="eq:axpby">
-    <img src="https://cdn.jsdelivr.net/gh/stdlib-js/stdlib@479348ebe090467aebad2d2aaebc3ba5e8a1772c/lib/node_modules/@stdlib/blas/ext/base/ndarray/saxpby/docs/img/equation_axpby.svg" alt="Equation for axpby operation.">
+    <img src="https://cdn.jsdelivr.net/gh/stdlib-js/stdlib@5a84d0c231e0712a8b057e6735d4d51798c7bb9f/lib/node_modules/@stdlib/blas/ext/base/ndarray/saxpby/docs/img/equation_axpby.svg" alt="Equation for axpby operation.">
     <br>
 </div> -->
 
@@ -56,38 +56,32 @@ This BLAS extension implements the operation
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-ext-base-ndarray-saxpby
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-saxpby = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-saxpby@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var saxpby = require( 'path/to/vendor/umd/blas-ext-base-ndarray-saxpby/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-saxpby@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.saxpby;
-})();
-</script>
+var saxpby = require( '@stdlib/blas-ext-base-ndarray-saxpby' );
 ```
 
 #### saxpby( arrays )
@@ -137,17 +131,12 @@ The function has the following parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-tensor0d-float32@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ndarraylike2scalar@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-ndarray-saxpby@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-discrete-uniform' );
+var Float32Tensor0D = require( '@stdlib/ndarray-tensor0d-float32' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var ndarraylike2scalar = require( '@stdlib/ndarray-ndarraylike2scalar' );
+var saxpby = require( '@stdlib/blas-ext-base-ndarray-saxpby' );
 
 var opts = {
     'dtype': 'float32'
@@ -167,11 +156,6 @@ console.log( 'Beta: %d', ndarraylike2scalar( beta ) );
 
 saxpby( [ x, y, alpha, beta ] );
 console.log( ndarray2array( y ) );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
